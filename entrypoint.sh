@@ -97,6 +97,9 @@ fi
 #     $KAFKA_HOME/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 3 --topic kylin_streaming_topic
 # fi
 
+#Initialize Hive
+$HIVE_HOME/bin/schematool -dbType mysql -initSchema
+
 # create sample data at the first time
 if [ ! -f "/home/admin/first_run" ]
 then
