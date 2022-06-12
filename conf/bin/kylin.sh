@@ -89,7 +89,6 @@ function retrieveDependency() {
           then
              echo "Remove ${KYLIN_HOME}/tomcat/webapps/kylin/WEB-INF/lib/guava-14.0.jar to avoid version conflicts"
              rm -rf ${KYLIN_HOME}/tomcat/webapps/kylin/WEB-INF/lib/guava-14.0.jar
-             cp xmondrian.war ${KYLIN_HOME}/tomcat/webapps
              rm -rf ${KYLIN_HOME}/tomcat/webapps/kylin/kylin.war
              cd ${KYLIN_HOME}/
           fi

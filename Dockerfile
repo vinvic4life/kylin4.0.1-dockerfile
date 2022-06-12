@@ -32,6 +32,7 @@ RUN sed -i "s/\"kylin.engine.build-base-cuboid-enabled\":\ \"false\"/\"kylin.eng
 COPY conf/kylin/* $KYLIN_HOME/conf/
 RUN cp $HIVE_HOME/lib/mysql-connector-java-5.1.24.jar $KYLIN_HOME/lib/
 RUN mkdir -p $KYLIN_HOME/bin/hadoop3_jars/cdh6
+COPY xmondrian.war $KYLIN_HOME/tomcat/webapps
 COPY hive-exec-1.21.2.3.1.0.0-78.jar $KYLIN_HOME/bin/hadoop3_jars/cdh6
 COPY stax2-api-3.1.4.jar $KYLIN_HOME/bin/hadoop3_jars/cdh6
 COPY commons-configuration-1.10.jar $KYLIN_HOME/lib/
