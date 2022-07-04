@@ -89,6 +89,11 @@ RUN wget https://archive.apache.org/dist/hive/hive-$HIVE_VERSION/apache-hive-$HI
 COPY conf/hive/hive-site.xml $HIVE_HOME/conf
 COPY conf/hive/hive-site.xml $HADOOP_CONF/
 
+# setup mdx
+RUN wget https://github.com/vinvic4life/mycloudkite/raw/master/mdx-kylin-4.0.1-beta.tar \
+	&& tar -xvf /home/admin/mdx-kylin-4.0.1-beta.tar \
+	&& rm -f /home/admin/mdx-kylin-4.0.1-beta.tar
+	
 # setup spark
 RUN wget https://archive.apache.org/dist/spark/spark-$SPARK_VERSION/spark-$SPARK_VERSION-bin-hadoop3.2.tgz \
     && tar -zxvf /home/admin/spark-$SPARK_VERSION-bin-hadoop3.2.tgz \

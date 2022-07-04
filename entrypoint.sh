@@ -109,6 +109,8 @@ touch /home/admin/first_run
 sleep 10s
 # start kylin
 $KYLIN_HOME/bin/kylin.sh -v start >> ${KYLIN_HOME}/logs/kylin-verbose.log 2>&1
+# start mdx
+$MDX_HOME/bin/mdx.sh start >> $MDX_HOME/mdx-verbose.log 2>&1
 
 while :
 do

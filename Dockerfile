@@ -21,6 +21,7 @@ FROM hadoop3.2-all-in-one-for-kylin4
 ENV RELATED_SPARK_VERSION spark3
 ENV KYLIN_VERSION 4.0.1
 ENV KYLIN_HOME /home/admin/apache-kylin-$KYLIN_VERSION-bin-$RELATED_SPARK_VERSION
+ENV MDX_HOME /home/admin/mdx-kylin-4.0.1-beta
 
 # Download Kylin
 RUN wget https://archive.apache.org/dist/kylin/apache-kylin-$KYLIN_VERSION/apache-kylin-$KYLIN_VERSION-bin-$RELATED_SPARK_VERSION.tar.gz \
