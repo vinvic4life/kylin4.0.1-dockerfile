@@ -23,6 +23,5 @@ echo "build image in dir "${DIR}
 
 echo "start build Hadoop docker image"
 docker build -f Dockerfile_hadoop -t hadoop3.2-all-in-one-for-kylin4 .
-docker-compose pull -q
 docker build -f Dockerfile -t apachekylin/apache-kylin-standalone:4.0.1 .
 

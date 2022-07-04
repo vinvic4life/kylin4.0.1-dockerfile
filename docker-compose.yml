@@ -2,7 +2,7 @@ version: '2'
 services:
   application:
     container_name: kylin
-    image: apachekylin/apache-kylin-standalone:kylin-4.0.1-mondrian
+    image: apachekylin/apache-kylin-standalone:4.0.1
     ports:
       - "7070:7070"
       - "7080:7080"
