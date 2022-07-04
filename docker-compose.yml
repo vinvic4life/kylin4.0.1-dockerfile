@@ -1,5 +1,15 @@
-version: '2'
+version: '3.9'
 services:
+  mysql:
+    image: mysql:8
+    ports:
+      - 3306:3306
+    volumes:
+      - ~/apps/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_PASSWORD=123456
+    restart: always
   application:
     container_name: kylin
     image: apachekylin/apache-kylin-standalone:4.0.1
