@@ -7,7 +7,7 @@ services:
       - 3306:3306
     networks:
       mynet:
-        ipv4_address: 172.17.0.2
+        ipv4_address: 17.17.0.2
     volumes:
       - ~/apps/mysql:/var/lib/mysql
     environment:
@@ -27,16 +27,15 @@ services:
       - "8088:8088"
     networks:
       mynet:
-        ipv4_address: 172.17.0.3
+        ipv4_address: 17.17.0.3
     expose:
       - "7070"
       - "7080"
     restart: always
 networks:
-  vcpbr:
+  mynet:
     driver: bridge
     ipam:
       config:
-        subnet: 172.17.0.0/24
-        gateway: 172.17.0.1
-    external: true
+        -  subnet: 17.17.0.0/24
+           gateway: 17.17.0.1 
