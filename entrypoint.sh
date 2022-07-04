@@ -30,6 +30,7 @@ if [ ! -f "/home/admin/first_run" ]
 then    
     mysql -h17.17.0.2 -uroot -p123456 -e "CREATE DATABASE IF NOT EXISTS kylin4 default charset utf8 COLLATE utf8_general_ci;"
     mysql -h17.17.0.2 -uroot -p123456 -e "grant all privileges on root.* to root@'%' identified by '123456';FLUSH   PRIVILEGES;"
+    mysql -h17.17.0.2 -uroot -p123456 -e "CREATE DATABASE IF NOT EXISTS mdx default charset utf8 COLLATE utf8_general_ci;"
 fi
 
 # start hdfs
