@@ -90,7 +90,7 @@ COPY conf/hive/hive-site.xml $HIVE_HOME/conf
 COPY conf/hive/hive-site.xml $HADOOP_CONF/
 
 # setup mdx
-RUN wget https://github.com/vinvic4life/mycloudkite/raw/master/mdx-kylin-4.0.1-beta.zip \
+RUN wget https://media.githubusercontent.com/media/vinvic4life/mycloudkite/master/mdx-kylin-4.0.1-beta.zip \
 	&& unzip /home/admin/mdx-kylin-4.0.1-beta.zip \
 	&& rm -f /home/admin/mdx-kylin-4.0.1-beta.zip
 	

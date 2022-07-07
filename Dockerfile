@@ -24,7 +24,7 @@ ENV KYLIN_HOME /home/admin/apache-kylin-4.0.1-bin-spark2
 ENV MDX_HOME /home/admin/mdx-kylin-4.0.1-beta
 
 # Download Kylin
-RUN wget https://github.com/vinvic4life/mycloudkite/raw/master/apache-kylin-4.0.1-bin-spark2.zip \
+RUN wget https://media.githubusercontent.com/media/vinvic4life/mycloudkite/master/apache-kylin-4.0.1-bin-spark2.zip \
     && unzip /home/admin/apache-kylin-4.0.1-bin-spark2.zip \
     && rm -f /home/admin/apache-kylin-4.0.1-bin-spark2.zip
 RUN rm -f $KYLIN_HOME/conf/kylin.properties
