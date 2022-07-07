@@ -104,8 +104,8 @@ RUN wget https://archive.apache.org/dist/kafka/$KAFKA_VERSION/kafka_2.11-$KAFKA_
     && rm -f /home/admin/kafka_2.11-$KAFKA_VERSION.tgz
 
 # setup zk
-RUN wget https://archive.apache.org/dist/zookeeper/zookeeper-$ZK_VERSION/zookeeper-$ZK_VERSION-bin.tar.gz \
-    && tar -zxvf /home/admin/zookeeper-$ZK_VERSION-bin.tar.gz \
-    && rm -f /home/admin/zookeeper-$ZK_VERSION-bin.tar.gz \
+RUN wget https://archive.apache.org/dist/zookeeper/zookeeper-$ZK_VERSION/zookeeper-$ZK_VERSION.tar.gz \
+    && tar -zxvf /home/admin/zookeeper-$ZK_VERSION.tar.gz \
+    && rm -f /home/admin/zookeeper-$ZK_VERSION.tar.gz \
     && mkdir -p /data/zookeeper
 COPY conf/zk/zoo.cfg $ZK_HOME/conf
