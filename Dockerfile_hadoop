@@ -95,7 +95,7 @@ RUN wget https://archive.apache.org/dist/spark/spark-$SPARK_VERSION/spark-$SPARK
     && cp $HIVE_HOME/conf/hive-site.xml $SPARK_HOME/conf \
     && cp $SPARK_HOME/yarn/*.jar $HADOOP_HOME/share/hadoop/yarn/lib
 RUN cp $HIVE_HOME/lib/mysql-connector-java-5.1.24.jar $SPARK_HOME/jars
-RUN cp $HIVE_HOME/hcatalog/share/hcatalog/hive-hcatalog-core-3.1.2.jar $SPARK_HOME/jars/
+RUN cp $HIVE_HOME/hcatalog/share/hcatalog/hive-hcatalog-core-1.2.1.jar $SPARK_HOME/jars/
 COPY conf/spark/* $SPARK_CONF_DIR/
 
 # setup kafka
