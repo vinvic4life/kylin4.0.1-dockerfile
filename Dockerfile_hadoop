@@ -43,7 +43,7 @@ WORKDIR /home/admin
 # install tools
 RUN apt-get update -y
 RUN apt upgrade -y
-RUN apt-get install wget curl lsb-release gnupg net-tools apt-utils vim -y
+RUN apt-get install wget curl lsb-release gnupg net-tools apt-utils vim zip unzip -y
 
 # install java
 RUN apt-get update && \
@@ -90,9 +90,9 @@ COPY conf/hive/hive-site.xml $HIVE_HOME/conf
 COPY conf/hive/hive-site.xml $HADOOP_CONF/
 
 # setup mdx
-RUN wget https://github.com/vinvic4life/mycloudkite/raw/master/mdx-kylin-4.0.1-beta.tar \
-	&& tar -xvf /home/admin/mdx-kylin-4.0.1-beta.tar \
-	&& rm -f /home/admin/mdx-kylin-4.0.1-beta.tar
+RUN wget https://github.com/vinvic4life/mycloudkite/raw/master/mdx-kylin-4.0.1-beta.zip \
+	&& unzip /home/admin/mdx-kylin-4.0.1-beta.zip \
+	&& rm -f /home/admin/mdx-kylin-4.0.1-beta.zip
 	
 # setup spark
 RUN wget https://archive.apache.org/dist/spark/spark-$SPARK_VERSION/spark-$SPARK_VERSION-bin-hadoop3.2.tgz \
