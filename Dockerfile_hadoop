@@ -43,7 +43,7 @@ WORKDIR /home/admin
 # install tools
 RUN apt-get update -y
 RUN apt upgrade -y
-RUN apt-get install wget curl lsb-release gnupg net-tools apt-utils vim zip unzip -y
+RUN apt-get install wget curl lsb-release gnupg net-tools apt-utils vim zip -y
 
 # install java
 RUN apt-get update && \
