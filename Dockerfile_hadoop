@@ -18,11 +18,11 @@
 # Docker image with Hadoop/Spark/Hive/ZK/Kafka installed
 FROM ubuntu:20.04
 
-ENV HIVE_VERSION 3.1.2
-ENV HADOOP_VERSION 3.2.0
-ENV SPARK_VERSION 3.1.2
-ENV ZK_VERSION 3.6.3
-ENV KAFKA_VERSION 2.1.1
+ENV HIVE_VERSION 1.2.1
+ENV HADOOP_VERSION 2.8.5
+ENV SPARK_VERSION 2.4.7
+ENV ZK_VERSION 3.4.6
+ENV KAFKA_VERSION 1.1.1
 
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 ENV MVN_HOME /home/admin/apache-maven-3.6.1
@@ -54,10 +54,7 @@ RUN apt-get update && \
 	rm -rf /var/cache/oracle-jdk8-installer
 
 #install mysql
-COPY mysql.list /etc/apt/sources.list.d
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 467B942D3A79BD29 \
-    && apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt install -f mysql-client=5.7* mysql-community-server=5.7* mysql-server=5.7* -y -q
+RUN apt install mysql-client -y
 
 # install mvn
 RUN wget https://archive.apache.org/dist/maven/maven-3/3.6.1/binaries/apache-maven-3.6.1-bin.tar.gz \
