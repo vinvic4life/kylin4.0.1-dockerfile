@@ -89,9 +89,9 @@ RUN wget https://media.githubusercontent.com/media/vinvic4life/mycloudkite/maste
 	&& rm -f /home/admin/mdx-kylin-4.0.1-beta.zip
 	
 # setup spark
-RUN wget https://archive.apache.org/dist/spark/spark-$SPARK_VERSION/spark-$SPARK_VERSION-bin-hadoop3.2.tgz \
-    && tar -zxvf /home/admin/spark-$SPARK_VERSION-bin-hadoop3.2.tgz \
-    && rm -f /home/admin/spark-$SPARK_VERSION-bin-hadoop3.2.tgz \
+RUN wget https://archive.apache.org/dist/spark/spark-$SPARK_VERSION/spark-$SPARK_VERSION-bin-hadoop2.8.5.tgz \
+    && tar -zxvf /home/admin/spark-$SPARK_VERSION-bin-hadoop2.8.5.tgz \
+    && rm -f /home/admin/spark-$SPARK_VERSION-bin-hadoop2.8.5.tgz \
     && cp $HIVE_HOME/conf/hive-site.xml $SPARK_HOME/conf \
     && cp $SPARK_HOME/yarn/*.jar $HADOOP_HOME/share/hadoop/yarn/lib
 RUN cp $HIVE_HOME/lib/mysql-connector-java-5.1.24.jar $SPARK_HOME/jars
