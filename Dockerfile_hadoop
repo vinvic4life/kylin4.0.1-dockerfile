@@ -93,7 +93,9 @@ RUN wget https://media.githubusercontent.com/media/vinvic4life/mycloudkite/maste
     && unzip /home/admin/spark-$SPARK_VERSION-bin-hadoop2.7.zip \
     && rm -f /home/admin/spark-$SPARK_VERSION-bin-hadoop2.7.zip \
     && cp $HIVE_HOME/conf/hive-site.xml $SPARK_HOME/conf \    
-    cp -r conf/spark/* $SPARK_CONF_DIR
+RUN rm -f $SPARK_CONF_DIR/spark-env.sh \
+    && rm -f $SPARK_CONF_DIR/spark-defaults.conf
+COPY conf/spark/* $SPARK_CONF_DIR
 
 # setup kafka
 RUN wget https://archive.apache.org/dist/kafka/$KAFKA_VERSION/kafka_2.11-$KAFKA_VERSION.tgz \
