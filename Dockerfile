@@ -31,6 +31,10 @@ RUN rm -f $KYLIN_HOME/conf/kylin.properties
 # See KYLIN-5071
 RUN sed -i "s/\"kylin.engine.build-base-cuboid-enabled\":\ \"false\"/\"kylin.engine.build-base-cuboid-enabled\":\ \"true\"/g" $KYLIN_HOME/sample_cube/template/cube_desc/kylin_sales_cube.json
 COPY conf/kylin/* $KYLIN_HOME/conf/
+RUN mkdir -p $KYLIN_HOME/bin/hadoop3_jars/cdh6
+COPY hive-exec-1.21.2.3.1.0.0-78.jar $KYLIN_HOME/bin/hadoop3_jars/cdh6
+COPY stax2-api-3.1.4.jar $KYLIN_HOME/bin/hadoop3_jars/cdh6
+COPY commons-configuration-1.10.jar $KYLIN_HOME/lib/
 RUN sed -i "s/hbase/java/g" $KYLIN_HOME/bin/set-java-home.sh
 
 COPY ./entrypoint.sh /home/admin/entrypoint.sh
