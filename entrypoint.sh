@@ -20,11 +20,6 @@ echo "127.0.0.1 sandbox sandbox.hortonworks.com" >> /etc/hosts
 
 # clean pid files
 rm -f /tmp/*.pid
-if [ ! -f "/home/admin/first_run" ]
-then
-    mysqld_pre_systemd
-fi
-service mysql start
 # start mysql
 if [ ! -f "/home/admin/first_run" ]
 then    
