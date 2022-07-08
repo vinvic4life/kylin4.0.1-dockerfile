@@ -13,10 +13,13 @@
   See the License for the specific language governing permissions and
   limitations under the License. See accompanying LICENSE file.
 -->
+
+<!-- Put site-specific property overrides in this file. -->
+
 <configuration>
     <property>
         <name>javax.jdo.option.ConnectionURL</name>
-        <value>jdbc:mysql://17.17.0.2:3306/hive?createDatabaseIfNotExist=true&amp;useSSL=false</value>
+        <value>jdbc:mysql://localhost:3306/hive?createDatabaseIfNotExist=true&amp;useSSL=false</value>
         <description>JDBC connect string for a JDBC metastore</description>
     </property>
     <property>

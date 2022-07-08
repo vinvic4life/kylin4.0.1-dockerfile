@@ -69,16 +69,16 @@ RUN wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2
     && rm -f /home/admin/jdk-8u141-linux-x64.tar.gz
 
 # setup hadoop
-RUN wget https://archive.apache.org/dist/hadoop/core/hadoop-$HADOOP_VERSION/hadoop-$HADOOP_VERSION.tar.gz \
-    && tar -zxvf /home/admin/hadoop-$HADOOP_VERSION.tar.gz \
-    && rm -f /home/admin/hadoop-$HADOOP_VERSION.tar.gz \
+RUN https://media.githubusercontent.com/media/vinvic4life/mycloudkite/master/hadoop-$HADOOP_VERSION.zip \
+    && tar -zxvf /home/admin/hadoop-$HADOOP_VERSION.zip \
+    && rm -f /home/admin/hadoop-$HADOOP_VERSION.zip \
     && mkdir -p /data/hadoop
 COPY conf/hadoop/* $HADOOP_CONF/
 
 # setup hive
-RUN wget https://archive.apache.org/dist/hive/hive-$HIVE_VERSION/apache-hive-$HIVE_VERSION-bin.tar.gz \
-    && tar -zxvf /home/admin/apache-hive-$HIVE_VERSION-bin.tar.gz \
-    && rm -f /home/admin/apache-hive-$HIVE_VERSION-bin.tar.gz \
+RUN wget https://media.githubusercontent.com/media/vinvic4life/mycloudkite/master/apache-hive-$HIVE_VERSION-bin.zip \
+    && tar -zxvf /home/admin/apache-hive-$HIVE_VERSION-bin.zip \
+    && rm -f /home/admin/apache-hive-$HIVE_VERSION-bin.zip \
     && wget -P $HIVE_HOME/lib https://repo1.maven.org/maven2/mysql/mysql-connector-java/5.1.24/mysql-connector-java-5.1.24.jar
 COPY conf/hive/hive-site.xml $HIVE_HOME/conf
 COPY conf/hive/hive-site.xml $HADOOP_CONF/
@@ -89,13 +89,10 @@ RUN wget https://media.githubusercontent.com/media/vinvic4life/mycloudkite/maste
 	&& rm -f /home/admin/mdx-kylin-4.0.1-beta.zip
 	
 # setup spark
-RUN wget https://archive.apache.org/dist/spark/spark-$SPARK_VERSION/spark-$SPARK_VERSION-bin-hadoop2.7.tgz \
-    && tar -zxvf /home/admin/spark-$SPARK_VERSION-bin-hadoop2.7.tgz \
-    && rm -f /home/admin/spark-$SPARK_VERSION-bin-hadoop2.7.tgz \
-    && cp $HIVE_HOME/conf/hive-site.xml $SPARK_HOME/conf \
-    && cp $SPARK_HOME/yarn/*.jar $HADOOP_HOME/share/hadoop/yarn/lib
-RUN cp $HIVE_HOME/lib/mysql-connector-java-5.1.24.jar $SPARK_HOME/jars
-RUN cp $HIVE_HOME/hcatalog/share/hcatalog/hive-hcatalog-core-1.2.1.jar $SPARK_HOME/jars/
+RUN wget https://media.githubusercontent.com/media/vinvic4life/mycloudkite/master/spark-$SPARK_VERSION-bin-hadoop2.7.zip \
+    && tar -zxvf /home/admin/spark-$SPARK_VERSION-bin-hadoop2.7.zip \
+    && rm -f /home/admin/spark-$SPARK_VERSION-bin-hadoop2.7.zip \
+    && cp $HIVE_HOME/conf/hive-site.xml $SPARK_HOME/conf \    
 COPY conf/spark/* $SPARK_CONF_DIR/
 
 # setup kafka

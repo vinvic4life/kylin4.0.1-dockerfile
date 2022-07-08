@@ -20,12 +20,16 @@ echo "127.0.0.1 sandbox sandbox.hortonworks.com" >> /etc/hosts
 
 # clean pid files
 rm -f /tmp/*.pid
+
+sleep 60s
+
 # start mysql
 if [ ! -f "/home/admin/first_run" ]
-then    
+then
+    mysql -h17.17.0.2 --connect-expired-password -u root -p$mysql_init_password -e "set global validate_password_policy=0;set global validate_password_length=6;alter user user() identified by '123456';"
     mysql -h17.17.0.2 -uroot -p123456 -e "CREATE DATABASE IF NOT EXISTS kylin4 default charset utf8 COLLATE utf8_general_ci;"
-    mysql -h17.17.0.2 -uroot -p123456 -e "grant all privileges on root.* to 'root'@'%' identified by '123456';FLUSH   PRIVILEGES;"
     mysql -h17.17.0.2 -uroot -p123456 -e "CREATE DATABASE IF NOT EXISTS mdx default charset utf8 COLLATE utf8_general_ci;"
+    mysql -h17.17.0.2 -uroot -p123456 -e "grant all privileges on root.* to root@'%' identified by '123456';FLUSH   PRIVILEGES;"
 fi
 
 # start hdfs
@@ -92,9 +96,6 @@ fi
 # then
 #     $KAFKA_HOME/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 3 --topic kylin_streaming_topic
 # fi
-
-#Initialize Hive
-$HIVE_HOME/bin/schematool -dbType mysql -initSchema
 
 # create sample data at the first time
 if [ ! -f "/home/admin/first_run" ]

@@ -27,10 +27,7 @@ services:
       - "8088:8088"
     networks:
       mynet:
-        ipv4_address: 17.17.0.3
-    expose:
-      - "7070"
-      - "7080"
+       ipv4_address: 17.17.0.3
     restart: always
 networks:
   mynet:
