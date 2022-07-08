@@ -70,14 +70,14 @@ RUN wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2
 
 # setup hadoop
 RUN wget https://media.githubusercontent.com/media/vinvic4life/mycloudkite/master/hadoop-$HADOOP_VERSION.zip \
-    && tar -zxvf /home/admin/hadoop-$HADOOP_VERSION.zip \
+    && unzip /home/admin/hadoop-$HADOOP_VERSION.zip \
     && rm -f /home/admin/hadoop-$HADOOP_VERSION.zip \
     && mkdir -p /data/hadoop
 COPY conf/hadoop/* $HADOOP_CONF/
 
 # setup hive
 RUN wget https://media.githubusercontent.com/media/vinvic4life/mycloudkite/master/apache-hive-$HIVE_VERSION-bin.zip \
-    && tar -zxvf /home/admin/apache-hive-$HIVE_VERSION-bin.zip \
+    && unzip /home/admin/apache-hive-$HIVE_VERSION-bin.zip \
     && rm -f /home/admin/apache-hive-$HIVE_VERSION-bin.zip \
     && wget -P $HIVE_HOME/lib https://repo1.maven.org/maven2/mysql/mysql-connector-java/5.1.24/mysql-connector-java-5.1.24.jar
 COPY conf/hive/hive-site.xml $HIVE_HOME/conf
@@ -90,7 +90,7 @@ RUN wget https://media.githubusercontent.com/media/vinvic4life/mycloudkite/maste
 	
 # setup spark
 RUN wget https://media.githubusercontent.com/media/vinvic4life/mycloudkite/master/spark-$SPARK_VERSION-bin-hadoop2.7.zip \
-    && tar -zxvf /home/admin/spark-$SPARK_VERSION-bin-hadoop2.7.zip \
+    && unzip /home/admin/spark-$SPARK_VERSION-bin-hadoop2.7.zip \
     && rm -f /home/admin/spark-$SPARK_VERSION-bin-hadoop2.7.zip \
     && cp $HIVE_HOME/conf/hive-site.xml $SPARK_HOME/conf \    
 COPY conf/spark/* $SPARK_CONF_DIR/
