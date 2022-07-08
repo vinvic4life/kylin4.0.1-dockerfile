@@ -69,7 +69,7 @@ RUN wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2
     && rm -f /home/admin/jdk-8u141-linux-x64.tar.gz
 
 # setup hadoop
-RUN https://media.githubusercontent.com/media/vinvic4life/mycloudkite/master/hadoop-$HADOOP_VERSION.zip \
+RUN wget https://media.githubusercontent.com/media/vinvic4life/mycloudkite/master/hadoop-$HADOOP_VERSION.zip \
     && tar -zxvf /home/admin/hadoop-$HADOOP_VERSION.zip \
     && rm -f /home/admin/hadoop-$HADOOP_VERSION.zip \
     && mkdir -p /data/hadoop
