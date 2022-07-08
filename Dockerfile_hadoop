@@ -72,7 +72,8 @@ RUN wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2
 RUN wget https://media.githubusercontent.com/media/vinvic4life/mycloudkite/master/hadoop-$HADOOP_VERSION.zip \
     && unzip /home/admin/hadoop-$HADOOP_VERSION.zip \
     && rm -f /home/admin/hadoop-$HADOOP_VERSION.zip \
-    && mkdir -p /data/hadoop
+    && mkdir -p /data/hadoop \
+    && rm -f $HADOOP_CONF/hive-site.xml
 COPY conf/hadoop/* $HADOOP_CONF/
 
 # setup hive
@@ -92,6 +93,7 @@ RUN wget https://media.githubusercontent.com/media/vinvic4life/mycloudkite/maste
 RUN wget https://media.githubusercontent.com/media/vinvic4life/mycloudkite/master/spark-$SPARK_VERSION-bin-hadoop2.7.zip \
     && unzip /home/admin/spark-$SPARK_VERSION-bin-hadoop2.7.zip \
     && rm -f /home/admin/spark-$SPARK_VERSION-bin-hadoop2.7.zip \
+    && cp $SPARK_HOME/yarn/*.jar $HADOOP_HOME/share/hadoop/yarn/lib \
     && cp $HIVE_HOME/conf/hive-site.xml $SPARK_HOME/conf    
 COPY conf/spark/* $SPARK_CONF_DIR/
 
