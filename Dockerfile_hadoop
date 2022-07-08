@@ -79,7 +79,7 @@ COPY conf/hadoop/* $HADOOP_CONF/
 RUN wget https://media.githubusercontent.com/media/vinvic4life/mycloudkite/master/apache-hive-$HIVE_VERSION-bin.zip \
     && unzip /home/admin/apache-hive-$HIVE_VERSION-bin.zip \
     && rm -f /home/admin/apache-hive-$HIVE_VERSION-bin.zip \
-    && wget -P $HIVE_HOME/lib https://repo1.maven.org/maven2/mysql/mysql-connector-java/5.1.24/mysql-connector-java-5.1.24.jar
+    && rm -f $HIVE_HOME/conf/hive-site.xml
 COPY conf/hive/hive-site.xml $HIVE_HOME/conf
 COPY conf/hive/hive-site.xml $HADOOP_CONF/
 
