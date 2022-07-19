@@ -35,6 +35,7 @@ ENV SPARK_CONF_DIR $SPARK_HOME/conf
 ENV ZK_HOME /home/admin/zookeeper-$ZK_VERSION
 ENV KAFKA_HOME /home/admin/kafka_2.11-$KAFKA_VERSION
 ENV PATH $PATH:$JAVA_HOME/bin:$ZK_HOME/bin:$HADOOP_HOME/bin:$HIVE_HOME/bin:$MVN_HOME/bin:$KAFKA_HOME/bin
+ENV MDX_HOME /home/admin/mdx-kylin-4.0.1-beta
 
 USER root
 
@@ -86,6 +87,7 @@ COPY conf/hive/hive-site.xml $HADOOP_CONF/
 RUN wget https://media.githubusercontent.com/media/vinvic4life/mycloudkite/master/mdx-kylin-4.0.1-beta.zip \
 	&& unzip /home/admin/mdx-kylin-4.0.1-beta.zip \
 	&& rm -f /home/admin/mdx-kylin-4.0.1-beta.zip
+COPY conf/mdx/* $MDX_HOME/conf/
 	
 # setup spark
 RUN wget https://media.githubusercontent.com/media/vinvic4life/mycloudkite/master/spark-$SPARK_VERSION-bin-hadoop2.7.zip \
