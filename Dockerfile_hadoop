@@ -72,15 +72,13 @@ RUN wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2
 RUN wget https://media.githubusercontent.com/media/vinvic4life/mycloudkite/master/hadoop-$HADOOP_VERSION.zip \
     && unzip /home/admin/hadoop-$HADOOP_VERSION.zip \
     && rm -f /home/admin/hadoop-$HADOOP_VERSION.zip \
-    && mkdir -p /data/hadoop \
-    && rm -f $HADOOP_CONF/hive-site.xml
+    && mkdir -p /data/hadoop    
 COPY conf/hadoop/* $HADOOP_CONF/
 
 # setup hive
 RUN wget https://media.githubusercontent.com/media/vinvic4life/mycloudkite/master/apache-hive-$HIVE_VERSION-bin.zip \
     && unzip /home/admin/apache-hive-$HIVE_VERSION-bin.zip \
-    && rm -f /home/admin/apache-hive-$HIVE_VERSION-bin.zip \
-    && rm -f $HIVE_HOME/conf/hive-site.xml
+    && rm -f /home/admin/apache-hive-$HIVE_VERSION-bin.zip
 COPY conf/hive/hive-site.xml $HIVE_HOME/conf
 COPY conf/hive/hive-site.xml $HADOOP_CONF/
 
