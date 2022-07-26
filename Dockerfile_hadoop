@@ -86,7 +86,10 @@ COPY conf/hive/hive-site.xml $HADOOP_CONF/
 # setup mdx
 RUN wget https://media.githubusercontent.com/media/vinvic4life/mycloudkite/master/mdx-kylin-4.0.1-beta.zip \
 	&& unzip /home/admin/mdx-kylin-4.0.1-beta.zip \
-	&& rm -f /home/admin/mdx-kylin-4.0.1-beta.zip
+	&& rm -f /home/admin/mdx-kylin-4.0.1-beta.zip \
+    && chmod +x /home/admin/mdx-kylin-4.0.1-beta/bin/* \
+    && chmod +x /home/admin/mdx-kylin-4.0.1-beta/semantic-mdx/*.sh* \
+    && chmod +x /home/admin/mdx-kylin-4.0.1-beta/semantic-mdx/scripts/*
 COPY conf/mdx/* $MDX_HOME/conf/
 	
 # setup spark
