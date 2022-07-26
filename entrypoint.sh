@@ -102,10 +102,10 @@ sleep 15s
 # create sample data at the first time
 if [ ! -f "/home/admin/first_run" ]
 then
-    sh $KYLIN_HOME/bin/sample.sh >> ${KYLIN_HOME}/logs/kylin-verbose.log 2>&1
+    $KYLIN_HOME/bin/sample.sh >> ${KYLIN_HOME}/logs/kylin-verbose.log 2>&1
 fi
 touch /home/admin/first_run
-sleep 10s
+sleep 30s
 # start kylin
 $KYLIN_HOME/bin/kylin.sh -v start >> ${KYLIN_HOME}/logs/kylin-verbose.log 2>&1
 # start mdx
