@@ -29,10 +29,7 @@ then
     mysql -h17.17.0.2 -uroot -p123456 -e "CREATE DATABASE IF NOT EXISTS mdx default charset utf8 COLLATE utf8_general_ci;"
     mysql -h17.17.0.2 -uroot -p123456 -e "grant all privileges on root.* to root@'%' identified by '123456';FLUSH   PRIVILEGES;"
 fi
-sleep 15s
-schematool -dbType mysql -initSchema  
-schematool -dbType mysql -info
-sleep 15s
+
 # start hdfs
 if [ ! -f "/home/admin/first_run" ]
 then
@@ -58,6 +55,10 @@ $ZK_HOME/bin/zkServer.sh start
 # nohup $KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server.properties &
 
 sleep 10s
+sleep 15s
+schematool -dbType mysql -initSchema  
+schematool -dbType mysql -info
+sleep 15s
 mkdir -p ${KYLIN_HOME}/logs
 # check hive usability first, this operation will insert one version record into VERSION table
 $KYLIN_HOME/bin/check-hive-usability.sh > ${KYLIN_HOME}/logs/kylin-verbose.log 2>&1

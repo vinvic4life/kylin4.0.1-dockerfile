@@ -7,9 +7,7 @@ services:
       - 3306:3306
     networks:
       mynet:
-        ipv4_address: 17.17.0.2
-    volumes:
-      - ~/apps/mysql:/var/lib/mysql
+       ipv4_address: 17.17.0.2    
     environment:
       - MYSQL_ROOT_PASSWORD=123456
       - MYSQL_ROOT_HOST:%
