@@ -58,7 +58,7 @@ sleep 10s
 sleep 15s
 schematool -dbType mysql -initSchema  
 schematool -dbType mysql -info
-sleep 15s
+sleep 60s
 mkdir -p ${KYLIN_HOME}/logs
 # check hive usability first, this operation will insert one version record into VERSION table
 $KYLIN_HOME/bin/check-hive-usability.sh > ${KYLIN_HOME}/logs/kylin-verbose.log 2>&1
