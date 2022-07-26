@@ -21,7 +21,7 @@ echo "127.0.0.1 sandbox sandbox.hortonworks.com" >> /etc/hosts
 # clean pid files
 rm -f /tmp/*.pid
 
-sleep 15s
+sleep 30s
 # start mysql
 if [ ! -f "/home/admin/first_run" ]
 then
@@ -54,11 +54,10 @@ $ZK_HOME/bin/zkServer.sh start
 # rm -rf /tmp/kafka-logs
 # nohup $KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server.properties &
 
-sleep 10s
 sleep 15s
 schematool -dbType mysql -initSchema  
 schematool -dbType mysql -info
-sleep 60s
+sleep 30s
 mkdir -p ${KYLIN_HOME}/logs
 # check hive usability first, this operation will insert one version record into VERSION table
 $KYLIN_HOME/bin/check-hive-usability.sh > ${KYLIN_HOME}/logs/kylin-verbose.log 2>&1
