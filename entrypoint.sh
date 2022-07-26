@@ -98,7 +98,7 @@ fi
 # then
 #     $KAFKA_HOME/bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 3 --topic kylin_streaming_topic
 # fi
-
+sleep 15s
 # create sample data at the first time
 if [ ! -f "/home/admin/first_run" ]
 then
