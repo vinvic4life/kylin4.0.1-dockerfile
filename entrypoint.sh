@@ -21,8 +21,7 @@ echo "127.0.0.1 sandbox sandbox.hortonworks.com" >> /etc/hosts
 # clean pid files
 rm -f /tmp/*.pid
 
-sleep 30s
-
+sleep 15s
 # start mysql
 if [ ! -f "/home/admin/first_run" ]
 then
@@ -30,7 +29,10 @@ then
     mysql -h17.17.0.2 -uroot -p123456 -e "CREATE DATABASE IF NOT EXISTS mdx default charset utf8 COLLATE utf8_general_ci;"
     mysql -h17.17.0.2 -uroot -p123456 -e "grant all privileges on root.* to root@'%' identified by '123456';FLUSH   PRIVILEGES;"
 fi
-
+sleep 15s
+schematool -dbType mysql -initSchema  
+schematool -dbType mysql -info
+sleep 15s
 # start hdfs
 if [ ! -f "/home/admin/first_run" ]
 then
