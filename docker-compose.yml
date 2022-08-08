@@ -8,6 +8,8 @@ services:
     networks:
       mynet:
        ipv4_address: 17.17.0.2    
+    volumes:
+      - mysql-data:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=123456
       - MYSQL_ROOT_HOST:%
@@ -34,3 +36,5 @@ networks:
       config:
         -  subnet: 17.17.0.0/24
            gateway: 17.17.0.1 
+volumes:
+  mysql-data:
