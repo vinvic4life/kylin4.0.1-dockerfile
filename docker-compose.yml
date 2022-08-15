@@ -28,6 +28,8 @@ services:
     networks:
       mynet:
        ipv4_address: 17.17.0.3
+    volumes:
+      - kylin-data:/data
     restart: always
 networks:
   mynet:
@@ -38,3 +40,4 @@ networks:
            gateway: 17.17.0.1 
 volumes:
   mysql-data:
+  kylin-data:
